@@ -1,0 +1,23 @@
+<div fxLayout="row">
+<textarea style="height: 400px;width: 400px;" [(ngModel)]="inputUserText" ></textarea>
+<div fxLayout="column" style="margin-left: 10px;margin-right: 10px;">
+  <button mat-raised-button color="primary" style="margin-top: 10px;margin-bottom: 10px;" (click)="convertToUpper()">UPPER CASE</button>
+  <button mat-raised-button color="primary" style="margin-top: 10px;margin-bottom: 10px;" (click)="convertToLower()">lower case</button>
+  <button mat-raised-button color="primary" style="margin-top: 10px;margin-bottom: 10px;"(click)="convertToTitleCase()">Title Case</button>
+
+</div>
+
+<textarea style="height: 400px;width: 400px;"  [(ngModel)]="outputUserText"></textarea>
+
+    <!-- <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Favorite food</mat-label>
+          <input matInput placeholder="please enter text..." value="Sushi">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+          <mat-label>Leave a comment</mat-label>
+          <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+      </form> -->
+</div>

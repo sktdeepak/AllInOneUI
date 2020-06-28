@@ -1,8 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CaseConverterComponent } from './converter/case-converter/case-converter.component';
+import { HomeComponent } from './home/home.component';
+import { DateDifferenceComponent } from './converter/date-difference/date-difference.component';
+import { AverageCalculateComponent } from './converter/average-calculate/average-calculate.component';
+import { RegisterationComponent } from './registeration/registeration.component';
+import { LoginComponent } from './login/login.component';
+import { RoleComponent } from './role/role.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [{ path: 'convertcase', component: CaseConverterComponent },
+{ path: 'datedifference', component: DateDifferenceComponent },
+{ path: 'average', component: AverageCalculateComponent },
+{ path: '', component: CaseConverterComponent },
+{ path: 'home', component: HomeComponent },
+{ path: 'register', component: RegisterationComponent },{ path: 'login', component: LoginComponent }
+,{ path: 'role', component: RoleComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,31 @@
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutGap="16px" appearance="outline">
+        <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput placeholder="Quantity" [(ngModel)]="quantity1" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" [(ngModel)]="price1" />
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="16px">
+        <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput placeholder="Quantity" [(ngModel)]="quantity2" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" [(ngModel)]="price2" />
+           
+        </mat-form-field>
+        <mat-label>{{lblAvgPrice}}</mat-label>
+    </div>
+    <div fxLayout="row" fxLayoutGap="16px">
+        <button mat-raised-button color="primary" style="margin-top: 10px;margin-bottom: 10px;"
+            (click)="calculateAverage()">AVERAGE</button>
+        <button mat-raised-button color="primary" style="margin-top: 10px;margin-bottom: 10px;"
+            (click)="calculateClear()">CLEAR</button>
+        
+    </div>
+</div>

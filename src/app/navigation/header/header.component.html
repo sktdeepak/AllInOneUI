@@ -1,0 +1,20 @@
+<mat-toolbar style="background-color:#673ab7;">
+  <div>
+      <button mat-icon-button (click)="onToggleSidenav()">
+          <mat-icon>menu</mat-icon>
+      </button>
+  </div>
+  <div fxFlexAlign="center">
+      <a routerLink="/home">Owner-Account</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxFlexAlign="center">
+      <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+          <li>
+            <a routerLink="/convertcase">Owner Actions</a>
+          </li>
+          <li>
+              <a routerLink="/datedifference">Account Actions</a>
+          </li>
+      </ul>
+  </div>
+</mat-toolbar>
