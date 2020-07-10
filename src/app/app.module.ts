@@ -12,10 +12,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatButton } from '@angular/material/button'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatButton } from '@angular/material/button';
+import { MatFormFieldModule,MatFormFieldControl } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CaseConverterComponent } from './converter/case-converter/case-converter.component';
@@ -30,6 +39,11 @@ import { RegisterationComponent } from './registeration/registeration.component'
 import { RoleComponent } from './role/role.component';
 
 import { HttpClientModule }    from '@angular/common/http';
+import { UserViewComponent } from './master/user-view/user-view.component';
+import { FieldWorkComponent } from './agriculture/field-work/field-work.component';
+import { AddFieldWorkComponent } from './popups/add-field-work/add-field-work.component';
+import { PriceViewComponent } from './master/price-view/price-view.component';
+import { AddPriceComponent } from './popups/add-price/add-price.component';
 
 @NgModule({
   declarations: [
@@ -42,14 +56,20 @@ import { HttpClientModule }    from '@angular/common/http';
     AverageCalculateComponent,
     LoginComponent,
     RegisterationComponent,
-    RoleComponent
+    RoleComponent,
+    UserViewComponent,
+    FieldWorkComponent,
+    AddFieldWorkComponent,
+    PriceViewComponent,
+    AddPriceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule, MatInputModule, MatSidenavModule, MatIconModule, MatButtonModule, MatListModule, FlexLayoutModule,
-    FormsModule, MatToolbarModule, MatGridListModule, MatTableModule, MatDialogModule, MatButtonModule
+    FormsModule, MatToolbarModule, MatGridListModule, MatTableModule, MatDialogModule, MatButtonModule,MatProgressSpinnerModule,
+    MatFormFieldModule,MatSelectModule,ReactiveFormsModule,SweetAlert2Module,MatDatepickerModule,MatNativeDateModule, MatPaginatorModule, MatSortModule
   ],
   providers: [TitleCasePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

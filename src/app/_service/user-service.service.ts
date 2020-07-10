@@ -3,7 +3,7 @@ import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { Constants } from '../constants';
-import {UserInfo} from '../_model/user'
+import {UserInfo,UserInfoModel} from '../_model/user'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' ,'Content-Type':'application/json; charset=utf-8'})
@@ -23,6 +23,16 @@ export class UserServiceService {
     console.log(userinfo);
     console.log(Constants.BaseURL +  'user/submituser');
     return this.http.post<any>(Constants.BaseURL +  'user/submituser',userinfo, httpOptions).pipe(
+        map(result => {
+                return result;
+            }),
+        catchError(this.handleError)
+      );
+  }
+
+  ViewUserDetails(): Observable<UserInfoModel[]> {
+    console.log(Constants.BaseURL +  'user/submituser');
+    return this.http.get<UserInfoModel[]>(Constants.BaseURL +  'User/GetUserList', httpOptions).pipe(
         map(result => {
                 return result;
             }),
