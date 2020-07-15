@@ -4,11 +4,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { AgricultureservieService } from './../../_service/agricultureservie.service';
-import { FieldWorkModel } from './../../_model/user';
+import { FieldWorkModel, PriceModel } from './../../_model/user';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 import { AddFieldWorkComponent } from 'src/app/popups/add-field-work/add-field-work.component';
 import { UserServiceService } from 'src/app/_service/user-service.service';
 import { UserInfoModel } from 'src/app/_model/user';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-field-work',
@@ -20,6 +21,8 @@ export class FieldWorkComponent implements OnInit {
   displayedColumns: string[] = ['fullName', 'date', 'weight', 'weighttype', 'action'];
   dialogRef;
   userList: UserInfoModel[] = [];
+  priceList: PriceModel[] = [];
+  userId:number=0;
   fieldWorkList = new MatTableDataSource<FieldWorkModel[]>()
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -43,15 +46,53 @@ export class FieldWorkComponent implements OnInit {
         this.userList = data;
       }
     });
-  }
 
-  deleteRecord(action, obj){
-    this.agricultureService.DeleteFieldWork(obj.id).subscribe((data: any) => {
+    this.agricultureService.GetPriceList().subscribe((data: any) => {
       if (data != null) {
-        this.fieldWorkList = data;
+        console.log("GetFieldWorkList:"+ data[0].id);
+        this.priceList = data;
       }
     });
   }
+
+  deleteRecord(action, obj) {
+    this.openDeletesweetalert(obj);
+  }
+
+  change(event)
+  {
+    if(event.isUserInput) {
+      console.log(event.source.value, event.source.selected);
+      this.agricultureService.SearchFieldWorkList(event.source.value).subscribe((data: any) => {
+        if (data != null) {
+          this.fieldWorkList = new MatTableDataSource(data);
+          this.fieldWorkList.paginator = this.paginator;
+      this.fieldWorkList.sort = this.sort;
+        }
+      });
+    }
+  }
+
+  openDeletesweetalert(obj:any){
+    Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.value) {
+      this.agricultureService.DeleteFieldWork(obj.id).subscribe((data: any) => {
+        if (data != null) {
+          this.fieldWorkList = data;
+        }
+      });
+      
+    }
+  });
+}
 
   updateRecord(action, obj): void {
     const dialogConfig = new MatDialogConfig();
@@ -69,6 +110,7 @@ console.log(obj);
       selectedUserId: obj.userId,
       selectedDate: obj.selectedDate,
       weightValue: obj.weight,
+      priceList: this.priceList
     };
     this.dialogRef = this.dialog.open(AddFieldWorkComponent, dialogConfig);
 
@@ -102,6 +144,7 @@ console.log(obj);
       selectedUserId: 0,
       selectedDate: new Date(),
       weightValue: 0,
+      priceList: this.priceList
     };
     this.dialogRef = this.dialog.open(AddFieldWorkComponent, dialogConfig);
 

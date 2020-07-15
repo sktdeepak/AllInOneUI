@@ -21,6 +21,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,7 @@ import { FieldWorkComponent } from './agriculture/field-work/field-work.componen
 import { AddFieldWorkComponent } from './popups/add-field-work/add-field-work.component';
 import { PriceViewComponent } from './master/price-view/price-view.component';
 import { AddPriceComponent } from './popups/add-price/add-price.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { AddPriceComponent } from './popups/add-price/add-price.component';
     FieldWorkComponent,
     AddFieldWorkComponent,
     PriceViewComponent,
-    AddPriceComponent
+    AddPriceComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { AddPriceComponent } from './popups/add-price/add-price.component';
     HttpClientModule,
     BrowserAnimationsModule, MatInputModule, MatSidenavModule, MatIconModule, MatButtonModule, MatListModule, FlexLayoutModule,
     FormsModule, MatToolbarModule, MatGridListModule, MatTableModule, MatDialogModule, MatButtonModule,MatProgressSpinnerModule,
-    MatFormFieldModule,MatSelectModule,ReactiveFormsModule,SweetAlert2Module,MatDatepickerModule,MatNativeDateModule, MatPaginatorModule, MatSortModule
+    MatFormFieldModule,MatSelectModule,ReactiveFormsModule,SweetAlert2Module,MatDatepickerModule,MatNativeDateModule, MatPaginatorModule, MatSortModule,
+    NgxChartsModule
   ],
   providers: [TitleCasePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

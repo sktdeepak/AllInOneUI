@@ -25,6 +25,7 @@ export class PriceViewComponent implements OnInit {
   constructor(private agricultureService: AgricultureservieService, private userServiceService: UserServiceService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    console.log(new Date());
     this.agricultureService.GetPriceList().subscribe((data: any) => {
       if (data != null) {
         this.priceList = new MatTableDataSource(data);

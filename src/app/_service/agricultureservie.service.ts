@@ -32,6 +32,18 @@ export class AgricultureservieService {
     );
   }
 
+  SearchFieldWorkList(userId:number): Observable<FieldWorkModel[]> {
+    console.log('Agriculture/SearchFieldWorkListByUserId/'+userId);
+    return this.http.get<FieldWorkModel[]>(Constants.BaseURL + 'Agriculture/SearchFieldWorkListByUserId/'+userId, httpOptions).pipe(
+      map(result => {
+        console.log(result);
+        return result;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+
   SaveFieldWork(fieldWorkModel: FieldWorkModel): Observable<number> {
     console.log("ieldWorkModel.Id :"+fieldWorkModel.Id);
     let addOrUpdateURL = Constants.BaseURL + (fieldWorkModel.Id == 0 ? 'Agriculture/SubmitFieldWork' : 'Agriculture/UpdateFieldWork');

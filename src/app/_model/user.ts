@@ -39,6 +39,7 @@ export class FieldWorkModel {
     Weight: number;  
     UserId: number;
     Date: Date;
+    UnitPriceId: number;
 }
 
 export class PriceModel {
@@ -46,4 +47,9 @@ export class PriceModel {
     Name: string;
     UnitPrice: number;
     Description: string;
+}
+
+export class DashboardModel {
+    name: string;
+    value: number;
 }

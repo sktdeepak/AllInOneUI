@@ -10,6 +10,7 @@ import { RoleComponent } from './role/role.component';
 import { UserViewComponent } from './master/user-view/user-view.component';
 import { FieldWorkComponent } from './agriculture/field-work/field-work.component';
 import { PriceViewComponent } from './master/price-view/price-view.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [{ path: 'convertcase', component: CaseConverterComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [{ path: 'convertcase', component: CaseConverterComponent
 { path: 'role', component: RoleComponent },
 { path: 'userview', component: UserViewComponent },
 { path: 'fieldwork', component: FieldWorkComponent },
-{ path: 'price', component: PriceViewComponent }
+{ path: 'price', component: PriceViewComponent },
+{ path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({

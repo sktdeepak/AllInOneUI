@@ -1,4 +1,10 @@
-
+<mat-form-field appearance="fill">
+  <mat-label>Price</mat-label>
+  <mat-select >
+    <mat-option>None</mat-option>
+    <mat-option (onSelectionChange)="change($event)" *ngFor="let state of userList" [value]="state.id">{{state.firstname}}</mat-option>
+  </mat-select>
+</mat-form-field>
 <button mat-raised-button (click)="addNewRecord()">Pick one</button>
 <table mat-table [dataSource]="fieldWorkList" class="mat-elevation-z8" style="width: 100%;">
 
