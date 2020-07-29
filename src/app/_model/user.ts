@@ -39,7 +39,7 @@ export class FieldWorkModel {
     Weight: number;  
     UserId: number;
     Date: Date;
-    UnitPriceId: number;
+    PriceId: number;
 }
 
 export class PriceModel {
@@ -49,7 +49,46 @@ export class PriceModel {
     Description: string;
 }
 
+export class UserPriceDetailModel {
+    Id:number;
+    UserId: number;
+    CreditAmount: number;
+    DebitAmount: number;
+    Date:Date;
+}
+
 export class DashboardModel {
     name: string;
     value: number;
+}
+
+export class SearchModel {
+    UserId: number;
+    ViewType: number;
+    StartDate: Date;
+    EndDate: Date;
+}
+
+export class ProductModel {
+    Id: number;
+    Name: string;
+    Description: string;
+}
+
+export class ProductCategoryModel {
+    Id: number;
+    Name: string;
+    Description: string;
+}
+
+export class ProductPriceDetailModel {
+    Id: number;
+    ProductId: number;
+    ProductCategoryId: number;
+    Quantity: number;
+    WeightType: number;
+    UnitPrice: number;
+    Total: number;
+    Date: Date;
+    BuyOrSell: number;
 }

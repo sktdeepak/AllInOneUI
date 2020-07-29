@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { Constants } from '../constants';
-import { FieldWorkModel, PriceModel } from '../_model/user'
+import { FieldWorkModel, PriceModel, SearchModel } from '../_model/user'
+import { Fieldworkresponse } from '../_model/Response/fieldworkresponse';
 
 
 const httpOptions = {
@@ -21,9 +22,9 @@ export class AgricultureservieService {
 
 
 
-  GetFieldWorkList(): Observable<FieldWorkModel[]> {
+  GetFieldWorkList(): Observable<Fieldworkresponse> {
     console.log(Constants.BaseURL + 'Agriculture/GetFieldWorkList');
-    return this.http.get<FieldWorkModel[]>(Constants.BaseURL + 'Agriculture/GetFieldWorkList', httpOptions).pipe(
+    return this.http.get<Fieldworkresponse>(Constants.BaseURL + 'Agriculture/GetFieldWorkList', httpOptions).pipe(
       map(result => {
         console.log(result);
         return result;
@@ -32,11 +33,21 @@ export class AgricultureservieService {
     );
   }
 
-  SearchFieldWorkList(userId:number): Observable<FieldWorkModel[]> {
+  SearchFieldWorkList(userId:number): Observable<Fieldworkresponse> {
     console.log('Agriculture/SearchFieldWorkListByUserId/'+userId);
-    return this.http.get<FieldWorkModel[]>(Constants.BaseURL + 'Agriculture/SearchFieldWorkListByUserId/'+userId, httpOptions).pipe(
+    return this.http.get<Fieldworkresponse>(Constants.BaseURL + 'Agriculture/SearchFieldWorkListByUserId/'+userId, httpOptions).pipe(
       map(result => {
         console.log(result);
+        return result;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  SearchFieldWorkListView(searchModel: SearchModel): Observable<Fieldworkresponse> {
+    return this.http.post<Fieldworkresponse>(Constants.BaseURL + 'Agriculture/SearchFieldWorkListByViewType',searchModel, httpOptions).pipe(
+      map(result => {
+        console.log('Search FieldWorkList '+result);
         return result;
       }),
       catchError(this.handleError)

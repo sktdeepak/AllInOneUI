@@ -11,6 +11,11 @@ import { UserViewComponent } from './master/user-view/user-view.component';
 import { FieldWorkComponent } from './agriculture/field-work/field-work.component';
 import { PriceViewComponent } from './master/price-view/price-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserPriceDetailComponent } from './agriculture/user-price-detail/user-price-detail.component';
+import { ProductComponent } from './agriculture/product/product.component';
+import { ProductCategoryComponent } from './agriculture/product-category/product-category.component';
+import { BuySellComponent } from './agriculture/buy-sell/buy-sell.component';
+import { AddProductBuySellComponent } from './popups/add-product-buy-sell/add-product-buy-sell.component';
 
 
 const routes: Routes = [{ path: 'convertcase', component: CaseConverterComponent },
@@ -23,7 +28,11 @@ const routes: Routes = [{ path: 'convertcase', component: CaseConverterComponent
 { path: 'userview', component: UserViewComponent },
 { path: 'fieldwork', component: FieldWorkComponent },
 { path: 'price', component: PriceViewComponent },
-{ path: 'dashboard', component: DashboardComponent }
+{ path: 'dashboard', component: DashboardComponent },
+{ path: 'pricedetail', component: UserPriceDetailComponent },
+{ path: 'product', component: ProductComponent },
+{ path: 'productcategory', component: ProductCategoryComponent },
+{ path: 'buysell', component: BuySellComponent }
 ];
 
 @NgModule({

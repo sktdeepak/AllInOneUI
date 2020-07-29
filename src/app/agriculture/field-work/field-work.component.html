@@ -5,6 +5,43 @@
     <mat-option (onSelectionChange)="change($event)" *ngFor="let state of userList" [value]="state.id">{{state.firstname}}</mat-option>
   </mat-select>
 </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Name</mat-label>
+  <mat-select [(ngModel)]="selectedViewType">
+    <mat-option>None</mat-option>
+    <mat-option (onSelectionChange)="changeViewType($event)" *ngFor="let state of viewType" [value]="state.id">{{state.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Start Date</mat-label>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="selectedStartDate">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>End Date</mat-label>
+  <input matInput [matDatepicker]="pickerEnd" [(ngModel)]="selectedEndDate">
+  <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+  <mat-datepicker #pickerEnd></mat-datepicker>
+</mat-form-field>
+
+<button mat-raised-button (click)="searchRecord()">Search</button>
+
+<mat-card>
+  <mat-label class="lblLeftSpace">Total Stock : </mat-label>
+<mat-label>{{totalStock}}</mat-label>
+<mat-label class="lblLeftSpace">Stock Amount : </mat-label>
+<mat-label>{{stockAmount}}</mat-label>
+<mat-label class="lblLeftSpace">Borrowed Amount : </mat-label>
+<mat-label>{{debitAmount}}</mat-label>
+<mat-label class="lblLeftSpace">Balanced Amount : </mat-label>
+<mat-label [ngClass]="{'balanceColorRed': (debitAmount - stockAmount) < 0, 'balanceColorGreen': (debitAmount - stockAmount) >= 0}">{{debitAmount - stockAmount}}</mat-label>
+<mat-label class="lblLeftSpace">Last Updated on </mat-label>
+<mat-label class="balanceColorRed">{{lastUpdated}}</mat-label>
+</mat-card>
+
 <button mat-raised-button (click)="addNewRecord()">Pick one</button>
 <table mat-table [dataSource]="fieldWorkList" class="mat-elevation-z8" style="width: 100%;">
 

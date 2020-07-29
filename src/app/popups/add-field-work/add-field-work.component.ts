@@ -37,7 +37,7 @@ export class AddFieldWorkComponent implements OnInit {
   userList: any;
   priceList:any;
   weightValue: number;
-  fieldWorkModel: FieldWorkModel = { UserId: 0, Weight: 0, WeightType: 0, Lastname: '', Firstname: '', FullName: '', Date: new Date(), Id: 0,UnitPriceId:0 };
+  fieldWorkModel: FieldWorkModel = { UserId: 0, Weight: 0, WeightType: 0, Lastname: '', Firstname: '', FullName: '', Date: new Date(), Id: 0,PriceId:0 };
   selectedUserId: number;
   selectedDate: string;
   selectedPriceId: number;
@@ -54,7 +54,7 @@ export class AddFieldWorkComponent implements OnInit {
       this.selectedDate = data.selectedDate;
       this.weightValue = data.weightValue;
       this.priceList = data.priceList;
-      this.priceId = data.price;
+      this.selectedPriceId = data.price;
     }
   }
 
@@ -73,7 +73,7 @@ export class AddFieldWorkComponent implements OnInit {
     
     this.fieldWorkModel.Date = new Date(this.selectedDate);
     console.log(this.fieldWorkModel.Date);
-    this.fieldWorkModel.UnitPriceId = this.priceId;
+    this.fieldWorkModel.PriceId = this.selectedPriceId;
     console.log(this.fieldWorkModel);
     //this.dialogRef.close({ data: this.responseText });
     this.agricultureservieService.SaveFieldWork(this.fieldWorkModel).subscribe((data: any) => {

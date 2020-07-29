@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Hi </h1>
+<mat-slide-toggle [(ngModel)]="buyOrSell" (change)="onBuySellChange()">Buy</mat-slide-toggle>
+<div mat-dialog-content>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+<mat-form-field appearance="fill">
+<mat-label>User</mat-label>
+<mat-select [(ngModel)]="selectedProductId">
+  <mat-option>None</mat-option>
+  <mat-option *ngFor="let state of userList" [value]="state.id">{{state.name}}</mat-option>
+</mat-select>
+</mat-form-field> -->
+
+<!-- <mat-form-field appearance="fill">
+  <mat-label>User</mat-label>
+  <mat-select [(ngModel)]="selectedProductCategoryId">
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let state of userList" [value]="state.id">{{state.name}}</mat-option>
+  </mat-select>
+  </mat-form-field> -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="quantity">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Unit Price</mat-label>
+        <input matInput [(ngModel)]="unitPrice">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Total</mat-label>
+        <input matInput [(ngModel)]="total">
+      </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">CANCEL</button>
+  <button mat-button onSaveClick (click)="onSaveClick()" cdkFocusInitial>SAVE</button>
+</div>

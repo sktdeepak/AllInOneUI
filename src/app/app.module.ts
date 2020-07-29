@@ -22,6 +22,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgxChartsModule }from '@swimlane/ngx-charts';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +47,14 @@ import { AddFieldWorkComponent } from './popups/add-field-work/add-field-work.co
 import { PriceViewComponent } from './master/price-view/price-view.component';
 import { AddPriceComponent } from './popups/add-price/add-price.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserPriceDetailComponent } from './agriculture/user-price-detail/user-price-detail.component';
+import { AddUserPriceDetailComponent } from './popups/add-user-price-detail/add-user-price-detail.component';
+import { ProductComponent } from './agriculture/product/product.component';
+import { ProductCategoryComponent } from './agriculture/product-category/product-category.component';
+import { BuySellComponent } from './agriculture/buy-sell/buy-sell.component';
+import { AddProductComponent } from './popups/add-product/add-product.component';
+import { AddProductCategoryComponent } from './popups/add-product-category/add-product-category.component';
+import { AddProductBuySellComponent } from './popups/add-product-buy-sell/add-product-buy-sell.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +73,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AddFieldWorkComponent,
     PriceViewComponent,
     AddPriceComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserPriceDetailComponent,
+    AddUserPriceDetailComponent,
+    ProductComponent,
+    ProductCategoryComponent,
+    BuySellComponent,
+    AddProductComponent,
+    AddProductCategoryComponent,
+    AddProductBuySellComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +90,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule, MatInputModule, MatSidenavModule, MatIconModule, MatButtonModule, MatListModule, FlexLayoutModule,
     FormsModule, MatToolbarModule, MatGridListModule, MatTableModule, MatDialogModule, MatButtonModule,MatProgressSpinnerModule,
     MatFormFieldModule,MatSelectModule,ReactiveFormsModule,SweetAlert2Module,MatDatepickerModule,MatNativeDateModule, MatPaginatorModule, MatSortModule,
-    NgxChartsModule
+    NgxChartsModule,MatSlideToggleModule
   ],
   providers: [TitleCasePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
