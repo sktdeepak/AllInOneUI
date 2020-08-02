@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { ProductBuySellService } from './../../_service/ProductBuySell/product-buy-sell.service';
-import { ProductModel, ProductPriceDetailModel } from './../../_model/user';
+import { ProductModel,ProductCategoryModel, ProductPriceDetailModel } from './../../_model/user';
 import { from } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AddPriceComponent } from '../add-price/add-price.component';
@@ -16,6 +16,8 @@ export interface DialogData {
   unitPrice:number;
   total:number;
   isAddOrUpdate:number;
+  productList:ProductModel[];
+  productCategoryList:ProductCategoryModel[];
 }
 
 @Component({
@@ -33,7 +35,9 @@ export class AddProductBuySellComponent implements OnInit {
   total:number;
   isAddOrUpdate:number;
   buyOrSell:number=0;
-  productBuySellModel: ProductPriceDetailModel={Id:0,UnitPrice:0,WeightType:0,BuyOrSell:0,Date:new Date(),ProductCategoryId:0,ProductId:0,Quantity:0,Total:0};
+  productPriceDetailModel: ProductPriceDetailModel={id:0,unitPrice:0,weightType:0,buyOrSell:0,date:new Date(),productCategoryId:0,productId:0,quantity:0,total:0,productCategoryName:'',productName:''};
+  productList:ProductModel[]=[];
+  productCategoryList:ProductCategoryModel[] = [];
 
   constructor(public dialogRef: MatDialogRef<AddPriceComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData, private productService: ProductBuySellService) {
     if (data) {
@@ -45,6 +49,8 @@ export class AddProductBuySellComponent implements OnInit {
       this.unitPrice = data.unitPrice;
       this.total = data.total;
       this.isAddOrUpdate = data.isAddOrUpdate;
+      this.productList = data.productList;
+      this.productCategoryList = data.productCategoryList;
     }
    }
 
@@ -58,19 +64,19 @@ export class AddProductBuySellComponent implements OnInit {
   }
 
   onSaveClick(): void {
-    this.productBuySellModel.Id = this.id;
-    this.productBuySellModel.BuyOrSell = this.buyOrSell;
-    this.productBuySellModel.Date = this.selectedDate;
-    this.productBuySellModel.ProductCategoryId=this.selectedProductCategoryId;
-    this.productBuySellModel.ProductId=this.selectedProductId;
-    this.productBuySellModel.Quantity=this.quantity;
-    this.productBuySellModel.Total=this.total;
-    this.productBuySellModel.UnitPrice=this.unitPrice;
-    this.productBuySellModel.WeightType=1;
-    console.log(this.productBuySellModel);
+    this.productPriceDetailModel.id = this.id;
+    this.productPriceDetailModel.buyOrSell = this.buyOrSell;
+    this.productPriceDetailModel.date = this.selectedDate;
+    this.productPriceDetailModel.productCategoryId=this.selectedProductCategoryId;
+    this.productPriceDetailModel.productId=this.selectedProductId;
+    this.productPriceDetailModel.quantity=Number(this.quantity);
+    this.productPriceDetailModel.total=Number(this.total);
+    this.productPriceDetailModel.unitPrice=Number(this.unitPrice);
+    this.productPriceDetailModel.weightType=1;
+    console.log(this.productPriceDetailModel);
     //this.dialogRef.close({ data: this.responseText });
     if(this.isAddOrUpdate == 1 ){
-    this.productService.SaveProductPriceDetail(this.productBuySellModel).subscribe((data: any) => {
+    this.productService.SaveProductPriceDetail(this.productPriceDetailModel).subscribe((data: any) => {
       if (data != null) {
         this.opensweetalert();
         this.dialogRef.close({ isUpdate: true });
@@ -81,7 +87,7 @@ export class AddProductBuySellComponent implements OnInit {
       }
     });}
     else{
-      this.productService.UpdateUserPriceDetail(this.productBuySellModel).subscribe((data: any) => {
+      this.productService.UpdateUserPriceDetail(this.productPriceDetailModel).subscribe((data: any) => {
         if (data != null) {
           this.opensweetalert();
           this.dialogRef.close({ isUpdate: true });

@@ -82,13 +82,15 @@ export class ProductCategoryModel {
 }
 
 export class ProductPriceDetailModel {
-    Id: number;
-    ProductId: number;
-    ProductCategoryId: number;
-    Quantity: number;
-    WeightType: number;
-    UnitPrice: number;
-    Total: number;
-    Date: Date;
-    BuyOrSell: number;
+    id: number;
+    productId: number;
+    productCategoryId: number;
+    quantity: number;
+    weightType: number;
+    unitPrice: number;
+    total: number;
+    date: Date;
+    buyOrSell: number;
+    productName:string;
+    productCategoryName:string;
 }

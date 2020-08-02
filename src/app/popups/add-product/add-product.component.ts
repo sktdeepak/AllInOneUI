@@ -52,7 +52,7 @@ export class AddProductComponent implements OnInit {
     console.log(this.productModel);
     //this.dialogRef.close({ data: this.responseText });
     if(this.isAddOrUpdate == 1 ){
-    this.productService.SaveProductPriceDetail(this.productModel).subscribe((data: any) => {
+    this.productService.SaveProduct(this.productModel).subscribe((data: any) => {
       if (data != null) {
         this.opensweetalert();
         this.dialogRef.close({ isUpdate: true });
@@ -63,7 +63,7 @@ export class AddProductComponent implements OnInit {
       }
     });}
     else{
-      this.productService.UpdateUserPriceDetail(this.productModel).subscribe((data: any) => {
+      this.productService.UpdateProduct(this.productModel).subscribe((data: any) => {
         if (data != null) {
           this.opensweetalert();
           this.dialogRef.close({ isUpdate: true });

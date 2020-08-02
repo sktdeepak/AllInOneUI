@@ -41,7 +41,7 @@ export class ProductBuySellService {
   }
 
   UpdateUserPriceDetail(productModel: ProductPriceDetailModel): Observable<ProductPriceDetailModel[]> {
-    let addOrUpdateURL = this.serviceURL +productModel.Id;
+    let addOrUpdateURL = this.serviceURL +productModel.id;
     console.log(addOrUpdateURL);
 
     return this.http.put<ProductPriceDetailModel[]>(addOrUpdateURL+'UpdateProductPrice', productModel, httpOptions).pipe(

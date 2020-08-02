@@ -18,7 +18,7 @@ export class ProductService {
 
 
 
-  GetProductPriceDetailList(): Observable<ProductModel[]> {
+  GetProductList(): Observable<ProductModel[]> {
     console.log(Constants.BaseURL + 'Product');
     return this.http.get<ProductModel[]>(Constants.BaseURL + 'Product', httpOptions).pipe(
       map(result => {
@@ -29,7 +29,7 @@ export class ProductService {
   }
 
 
-  SaveProductPriceDetail(productModel: ProductModel): Observable<ProductModel[]> {
+  SaveProduct(productModel: ProductModel): Observable<ProductModel[]> {
     let addOrUpdateURL = Constants.BaseURL + 'Product';
 
     return this.http.post<ProductModel[]>(addOrUpdateURL, productModel, httpOptions).pipe(
@@ -40,7 +40,7 @@ export class ProductService {
     );
   }
 
-  UpdateUserPriceDetail(productModel: ProductModel): Observable<ProductModel[]> {
+  UpdateProduct(productModel: ProductModel): Observable<ProductModel[]> {
     console.log("ieldWorkModel.Id :"+productModel.Id);
     let addOrUpdateURL = Constants.BaseURL + 'Product/' +productModel.Id;
     console.log(addOrUpdateURL);
@@ -53,7 +53,7 @@ export class ProductService {
     );
   }
 
-  DeleteFieldWork(id: number) {
+  DeleteProduct(id: number) {
     let addOrUpdateURL = Constants.BaseURL +'Product/'+id ;
     console.log(addOrUpdateURL);
 

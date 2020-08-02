@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.productService.GetProductPriceDetailList().subscribe((data: any) => {
+    this.productService.GetProductList().subscribe((data: any) => {
       if (data != null) {
         this.productDetailList = new MatTableDataSource(data);
         this.productDetailList.paginator = this.paginator;
@@ -59,7 +59,7 @@ export class ProductComponent implements OnInit {
       console.log('The dialog was closed');
       if (result.isUpdate) {
         console.log(result);
-        this.productService.GetProductPriceDetailList().subscribe((data: any) => {
+        this.productService.GetProductList().subscribe((data: any) => {
           if (data != null) {
             this.productDetailList = new MatTableDataSource(data);
             this.productDetailList.paginator = this.paginator;
@@ -91,7 +91,7 @@ export class ProductComponent implements OnInit {
       console.log('The dialog was closed');
       if (result.isUpdate) {
         console.log(result);
-        this.productService.GetProductPriceDetailList().subscribe((data: any) => {
+        this.productService.GetProductList().subscribe((data: any) => {
           if (data != null) {
             this.productDetailList = new MatTableDataSource(data);
             this.productDetailList.paginator = this.paginator;
@@ -117,7 +117,7 @@ export class ProductComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        this.productService.DeleteFieldWork(obj.id).subscribe((data: any) => {
+        this.productService.DeleteProduct(obj.id).subscribe((data: any) => {
           if (data != null) {
             this.productDetailList = new MatTableDataSource(data);
             this.productDetailList.paginator = this.paginator;
